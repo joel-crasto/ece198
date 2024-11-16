@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := RFIDattempt50
+BUILD_ARTIFACT_NAME := MFRC522NUCLEOF401RE
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-RFIDattempt50.elf \
+MFRC522NUCLEOF401RE.elf \
 
 MAP_FILES += \
-RFIDattempt50.map \
+MFRC522NUCLEOF401RE.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-RFIDattempt50.list \
+MFRC522NUCLEOF401RE.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: RFIDattempt50.elf secondary-outputs
+main-build: MFRC522NUCLEOF401RE.elf secondary-outputs
 
 # Tool invocations
-RFIDattempt50.elf RFIDattempt50.map: $(OBJS) $(USER_OBJS) C:\Users\jocr2\STM32CubeIDE\workspace_1.16.0\RFIDattempt50\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "RFIDattempt50.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\jocr2\STM32CubeIDE\workspace_1.16.0\RFIDattempt50\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RFIDattempt50.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MFRC522NUCLEOF401RE.elf MFRC522NUCLEOF401RE.map: $(OBJS) $(USER_OBJS) C:\Users\jocr2\STM32CubeIDE\workspace_1.16.0\MFRC522NUCLEOF401RE\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "MFRC522NUCLEOF401RE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\jocr2\STM32CubeIDE\workspace_1.16.0\MFRC522NUCLEOF401RE\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MFRC522NUCLEOF401RE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-RFIDattempt50.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "RFIDattempt50.list"
+MFRC522NUCLEOF401RE.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "MFRC522NUCLEOF401RE.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) RFIDattempt50.elf RFIDattempt50.list RFIDattempt50.map default.size.stdout
+	-$(RM) MFRC522NUCLEOF401RE.elf MFRC522NUCLEOF401RE.list MFRC522NUCLEOF401RE.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
