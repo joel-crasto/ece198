@@ -49,6 +49,7 @@ UART_HandleTypeDef huart2;
 uint8_t status;
 uint8_t str[MAX_LEN]; // Max_LEN = 16
 uint8_t sNum[5];
+uint8_t sComp[5];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,6 +98,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
   MFRC522_Init();
   /* USER CODE END 2 */
 
@@ -107,7 +109,17 @@ int main(void)
 
 	  status = MFRC522_Request(PICC_REQIDL, str);
 	    status = MFRC522_Anticoll(str);
+	    sComp[0] = sNum[0];
+	    sComp[2] = sNum[2];
+	    sComp[4] = sNum[4];
 	    memcpy(sNum, str, 5);
+
+
+	    if (sComp[0] != sNum[0] && sComp[2] != sNum[2] && sComp[4] != sNum[4]) {
+	    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET);
+	    HAL_Delay(1000);
+	    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
+	    }
 	    HAL_Delay(100);
     /* USER CODE END WHILE */
 
@@ -254,7 +266,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PC7 */
   GPIO_InitStruct.Pin = GPIO_PIN_7;
@@ -263,8 +275,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_6;
+  /*Configure GPIO pins : PB5 PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
