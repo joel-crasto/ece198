@@ -109,16 +109,17 @@ int main(void)
 
 	  status = MFRC522_Request(PICC_REQIDL, str);
 	    status = MFRC522_Anticoll(str);
-	    sComp[0] = sNum[0];
 	    sComp[2] = sNum[2];
+	    sComp[3] = sNum[3];
 	    sComp[4] = sNum[4];
 	    memcpy(sNum, str, 5);
 
 
-	    if (sComp[0] != sNum[0] && sComp[2] != sNum[2] && sComp[4] != sNum[4]) {
+	    if (sComp[2] != sNum[2] || sComp[3] != sNum[3] || sComp[4] != sNum[4]) {
 	    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET);
 	    HAL_Delay(1000);
 	    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
+	    HAL_Delay(1000);
 	    }
 	    HAL_Delay(100);
     /* USER CODE END WHILE */
