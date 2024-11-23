@@ -1,0 +1,2 @@
+../Core/Src/encryption.c:4:6:encrypt	80	static
+../Core/Src/encryption.c:28:6:decrypt	80	static
