@@ -1,0 +1,11 @@
+../Core/Src/main.c:76:6:decrypt	5
+../Core/Src/main.c:97:7:convert_to_char_array	3
+../Core/Src/main.c:117:5:compare	6
+../Core/Src/main.c:140:6:assign	2
+../Core/Src/main.c:150:6:insert	5
+../Core/Src/main.c:185:5:main	5
+../Core/Src/main.c:284:6:SystemClock_Config	3
+../Core/Src/main.c:331:13:MX_USART1_UART_Init	2
+../Core/Src/main.c:364:13:MX_USART2_UART_Init	2
+../Core/Src/main.c:397:13:MX_GPIO_Init	1
+../Core/Src/main.c:461:6:Error_Handler	1
